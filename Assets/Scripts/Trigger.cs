@@ -19,7 +19,7 @@ public class Trigger : MonoBehaviour
     [SerializeField] private float _speedFloat;
 
     private const float MaxImageScale = 5;
-    private const float MinImageScale = 5;
+    private const float MinImageScale = 0;
     private const float DurationChangeImage = 0.3f;
 
     private void Awake()

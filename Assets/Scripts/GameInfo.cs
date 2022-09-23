@@ -17,6 +17,9 @@ public class GameInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _oreText;
     [SerializeField] private TextMeshProUGUI _swordText;
 
+    private float _speedChangeSlider = 0.8f;
+    private Coroutine _changeSliderValueJob;
+
     private void OnEnable()
     {
         _knight.CargoChanged += CahngeSlider;
@@ -55,7 +58,24 @@ public class GameInfo : MonoBehaviour
     {
         if (((float)count / (float)_knight.NeedSwords) == 1)
         {
-            _slider.value += _addedValue;
+            float targetValue = _slider.value + _addedValue;
+            StartChangeSliderValue(targetValue);
+        }
+    }
+
+    private void StartChangeSliderValue(float targetValue)
+    {
+        if (_changeSliderValueJob != null)
+            StopCoroutine(_changeSliderValueJob);
+        _changeSliderValueJob = StartCoroutine(ChangeSliderValue(targetValue));
+    }
+
+    private IEnumerator ChangeSliderValue(float targetValue)
+    {
+        while (_slider.value != targetValue)
+        {
+            _slider.value = Mathf.MoveTowards(_slider.value, targetValue, _speedChangeSlider * Time.deltaTime);
+            yield return null;
         }
     }
 }
