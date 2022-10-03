@@ -57,14 +57,14 @@ public class Knight : Container
     private void OnTriggerStay(Collider other)
     {
         Container container;
-        if (other.TryGetComponent<Container>(out container) && Cargos.Count < _needSwords)
+        if (other.TryGetComponent<Container>(out container) && Items.Count < _needSwords)
         {
             Take(container);
-            SwordsChanged?.Invoke(Cargos.Count);
+            SwordsChanged?.Invoke(Items.Count);
         }
-        else if (Cargos.Count == _needSwords && !_isFill)
+        else if (Items.Count == _needSwords && !_isFill)
         {
-            SwordsChanged?.Invoke(Cargos.Count);
+            SwordsChanged?.Invoke(Items.Count);
             _isFill = true;
             _ellapsedTime = 0;
             _sword.gameObject.SetActive(true);
@@ -74,7 +74,7 @@ public class Knight : Container
 
     private void RunToStore()
     {
-        Cargos.Clear();
+        Items.Clear();
         if (_isFill)
         {
             transform.DORotate(_directionToStore, 0);
@@ -108,7 +108,7 @@ public class Knight : Container
         _currentSpeed = 0;
         transform.rotation = Quaternion.LookRotation(Vector3.back);
         _direction = Vector3.zero;
-        SwordsChanged?.Invoke(Cargos.Count);
+        SwordsChanged?.Invoke(Items.Count);
         _animator.SetBool(WalkAnimation, false);
         _isStop = true;
     }

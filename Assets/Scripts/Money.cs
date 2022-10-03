@@ -11,10 +11,8 @@ public class Money : MonoBehaviour
     [SerializeField] BoxCollider _jumpCollider;
     [SerializeField] BoxCollider _takeCollider;
 
-    private Tweener _tween;
     private Rigidbody _rigibody;
     private Player _target;
-    private Vector3 _lastTargetPosition;
     private float _durationMove = 0.8f;
     private float _delayMove = 1f;
     private float _minForce = 0.4f;
@@ -51,7 +49,6 @@ public class Money : MonoBehaviour
     {
         Vector3 force = new Vector3(CreateRandomDirection(), _forceUp, CreateRandomDirection());
         _rigibody.AddForce(force, ForceMode.Impulse);
-        _rigibody.mass+=5;
         transform.DOMove(_target.transform.position, _durationMove).SetDelay(_delayMove).SetAutoKill(false);
     }
 

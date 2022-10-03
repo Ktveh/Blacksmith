@@ -5,66 +5,117 @@ using UnityEngine.Events;
 
 public class Container : MonoBehaviour
 {
-    [SerializeField] private int _countX;
-    [SerializeField] private int _countY;
-    [SerializeField] private int _countZ;
-    [SerializeField] private float _distanceX;
-    [SerializeField] private float _distanceY;
-    [SerializeField] private float _distanceZ;
-    [SerializeField] private bool _isDonor;
+    [SerializeField] private Vector3 _amount;
+    [SerializeField] private Vector3 _indent;
+    [SerializeField] private List<Container> _donors;
+    [SerializeField] private List<Item> _neededItems;
     [SerializeField] private int _limit;
+    [SerializeField] private float _delay;
 
-    [SerializeField] protected List<Cargo> Cargos;
+    [SerializeField] protected List<Item> Items;
     [SerializeField] protected Transform FirstElementPosition;
 
-    public event UnityAction<int> CargoChanged;
+    private float _ellapsedTime = 0;
 
-    public bool IsEmpty => Cargos.Count == 0;
-    public bool IsDonor => _isDonor;
+    public event UnityAction<Dictionary<Item, int>> ItemsChanged;
+
+    public bool IsEmpty => Items.Count == 0;
 
     private void Start()
     {
-        Place();
+        PlaceItems();
+        ReportChange();
     }
 
-    protected void Place()
+    private void OnTriggerStay(Collider other)
+    {
+        _ellapsedTime += Time.deltaTime;
+
+        Container container;
+        if (_ellapsedTime > _delay && other.TryGetComponent<Container>(out container))
+        {
+            foreach (Container donor in _donors)
+            {
+                if (container.gameObject == donor.gameObject)
+                {
+                    Take(container);
+                }
+            }
+            _ellapsedTime = 0;
+        }
+    }
+
+    private void PlaceItems()
     {
         int index = 0;
-        for(int i = 0; i < _countX; i++)
+        for(int y = 0; y < _amount.y; y++)
         {
-            for (int j = 0; j < _countY; j++)
+            for (int x = 0; x < _amount.x; x++)
             {
-                for (int k = 0; k < _countZ; k++)
+                for (int z = 0; z < _amount.z; z++)
                 {
-                    if (index < Cargos.Count)
+                    if (index < Items.Count)
                     {
-                        Cargos[index].transform.position = new Vector3(FirstElementPosition.position.x + _distanceX * i, 
-                            FirstElementPosition.position.y + _distanceY * j, FirstElementPosition.position.z + _distanceZ * k);
-                        Cargos[index].transform.SetParent(FirstElementPosition);
-                        Cargos[index].transform.rotation = new Quaternion(0, 0, 0, 0);
+                        Items[index].transform.position = new Vector3(FirstElementPosition.position.x + _indent.x * x, 
+                            FirstElementPosition.position.y + _indent.y * y, FirstElementPosition.position.z + _indent.z * z);
+                        Items[index].transform.SetParent(FirstElementPosition);
+                        Items[index].transform.rotation = new Quaternion(0, 0, 0, 0);
                         index++;
                     }
+                }
+            }
+        } 
+    }
+
+    private void ReportChange()
+    {
+        Dictionary<Item, int> amountItems = new Dictionary<Item, int>();
+        foreach (Item neededItem in _neededItems)
+        {
+            amountItems[neededItem] = 0;
+            foreach (Item item in Items)
+            {
+                if (neededItem.GetType() == item.GetType())
+                {
+                    amountItems[neededItem]++;
+                    Debug.Log(amountItems[neededItem].ToString());
+                }
+            }
+        }
+        ItemsChanged?.Invoke(amountItems);
+    }
+
+    public virtual void Take(Container donor)
+    {
+        if (!donor.IsEmpty && Items.Count < _limit)
+        {
+            foreach(Item neededItem in _neededItems)
+            {
+                Item takedItem = donor.Give(neededItem);
+                if (takedItem != null)
+                {
+                    Items.Add(takedItem);
+                    PlaceItems();
+                    ReportChange();
+                    return;
                 }
             }
         }
     }
 
-    public virtual Cargo Give()
+    public virtual Item Give(Item neededItem)
     {
-        int index = Cargos.Count - 1;
-        Cargo lastCargo = Cargos[index];
-        Cargos.RemoveAt(index);
-        CargoChanged?.Invoke(Cargos.Count);
-        return lastCargo;
-    }
-
-    public virtual void Take(Container donor)
-    {
-        if (!donor.IsEmpty && Cargos.Count < _limit)
+        for (int i = Items.Count - 1; i >= 0; i--)
         {
-            Cargos.Add(donor.Give());
-            CargoChanged?.Invoke(Cargos.Count);
-            Place();
+            if (Items[i].GetType() == neededItem.GetType())
+            {
+                Item foundItem = Items[i];
+                Items.RemoveAt(i);
+                PlaceItems();
+                ReportChange();
+                return foundItem;
+            }
         }
+        return null;
     }
 }

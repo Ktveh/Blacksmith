@@ -22,18 +22,12 @@ public class GameInfo : MonoBehaviour
 
     private void OnEnable()
     {
-        _knight.CargoChanged += CahngeSlider;
-        _player.OreChanged += ChangeOreInfo;
-        _player.SwordChanged += ChangeSwordInfo;
-        _player.MoneyChanged += ChangeMoneyInfo;
+
     }
 
     private void OnDisable()
     {
-        _knight.CargoChanged -= CahngeSlider;
-        _player.OreChanged -= ChangeOreInfo;
-        _player.SwordChanged -= ChangeSwordInfo;
-        _player.MoneyChanged -= ChangeMoneyInfo;
+
     }
 
     private void ChangeMoneyInfo(int count)
