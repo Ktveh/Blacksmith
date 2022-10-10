@@ -7,19 +7,21 @@ public class Container : MonoBehaviour
 {
     [SerializeField] private Vector3 _amount;
     [SerializeField] private Vector3 _indent;
-    [SerializeField] private List<Container> _donors;
-    [SerializeField] private List<Item> _neededItems;
     [SerializeField] private int _limit;
-    [SerializeField] private float _delay;
 
-    [SerializeField] protected List<Item> Items;
+    [SerializeField] protected float Delay;
+    [SerializeField] protected List<Item> NeededItems;
+    [SerializeField] protected List<Container> Donors;
     [SerializeField] protected Transform FirstElementPosition;
+    [SerializeField] protected List<Item> Items;
 
     private float _ellapsedTime = 0;
 
     public event UnityAction<Dictionary<Item, int>> ItemsChanged;
 
-    public bool IsEmpty => Items.Count == 0;
+    public int Limit => _limit;
+    public bool IsEmpty => Items.Count <= 0;
+    public bool IsFull => Items.Count == _limit;
 
     private void Start()
     {
@@ -32,9 +34,9 @@ public class Container : MonoBehaviour
         _ellapsedTime += Time.deltaTime;
 
         Container container;
-        if (_ellapsedTime > _delay && other.TryGetComponent<Container>(out container))
+        if (_ellapsedTime > Delay && other.TryGetComponent<Container>(out container))
         {
-            foreach (Container donor in _donors)
+            foreach (Container donor in Donors)
             {
                 if (container.gameObject == donor.gameObject)
                 {
@@ -43,61 +45,21 @@ public class Container : MonoBehaviour
             }
             _ellapsedTime = 0;
         }
-    }
-
-    private void PlaceItems()
-    {
-        int index = 0;
-        for(int y = 0; y < _amount.y; y++)
-        {
-            for (int x = 0; x < _amount.x; x++)
-            {
-                for (int z = 0; z < _amount.z; z++)
-                {
-                    if (index < Items.Count)
-                    {
-                        Items[index].transform.position = new Vector3(FirstElementPosition.position.x + _indent.x * x, 
-                            FirstElementPosition.position.y + _indent.y * y, FirstElementPosition.position.z + _indent.z * z);
-                        Items[index].transform.SetParent(FirstElementPosition);
-                        Items[index].transform.rotation = new Quaternion(0, 0, 0, 0);
-                        index++;
-                    }
-                }
-            }
-        } 
-    }
-
-    private void ReportChange()
-    {
-        Dictionary<Item, int> amountItems = new Dictionary<Item, int>();
-        foreach (Item neededItem in _neededItems)
-        {
-            amountItems[neededItem] = 0;
-            foreach (Item item in Items)
-            {
-                if (neededItem.GetType() == item.GetType())
-                {
-                    amountItems[neededItem]++;
-                    Debug.Log(amountItems[neededItem].ToString());
-                }
-            }
-        }
-        ItemsChanged?.Invoke(amountItems);
-    }
+    } 
 
     public virtual void Take(Container donor)
     {
         if (!donor.IsEmpty && Items.Count < _limit)
         {
-            foreach(Item neededItem in _neededItems)
+            foreach(Item neededItem in NeededItems)
             {
                 Item takedItem = donor.Give(neededItem);
                 if (takedItem != null)
                 {
                     Items.Add(takedItem);
+                    Sort();
                     PlaceItems();
                     ReportChange();
-                    return;
                 }
             }
         }
@@ -111,11 +73,67 @@ public class Container : MonoBehaviour
             {
                 Item foundItem = Items[i];
                 Items.RemoveAt(i);
+                Sort();
                 PlaceItems();
                 ReportChange();
                 return foundItem;
             }
         }
         return null;
+    }
+
+    protected virtual void Sort()
+    {
+        List<Item> sortListItems = new List<Item>();
+        foreach (Item neededItem in NeededItems)
+        {
+            foreach (Item item in Items)
+            {
+                if (neededItem.GetType() == item.GetType())
+                {
+                    sortListItems.Add(item);
+                }
+            }
+        }
+        Items = sortListItems;
+    }
+
+    protected virtual void PlaceItems()
+    {
+        int index = 0;
+        for (int y = 0; y < _amount.y; y++)
+        {
+            for (int x = 0; x < _amount.x; x++)
+            {
+                for (int z = 0; z < _amount.z; z++)
+                {
+                    if (index < Items.Count)
+                    {
+                        Items[index].transform.position = new Vector3(FirstElementPosition.position.x + _indent.x * x,
+                            FirstElementPosition.position.y + _indent.y * y, FirstElementPosition.position.z + _indent.z * z);
+                        Items[index].transform.SetParent(FirstElementPosition);
+                        Items[index].transform.rotation = new Quaternion(0, 0, 0, 0);
+                        index++;
+                    }
+                }
+            }
+        }
+    }
+
+    protected void ReportChange()
+    {
+        Dictionary<Item, int> amountItems = new Dictionary<Item, int>();
+        foreach (Item neededItem in NeededItems)
+        {
+            amountItems[neededItem] = 0;
+            foreach (Item item in Items)
+            {
+                if (neededItem.GetType() == item.GetType())
+                {
+                    amountItems[neededItem]++;
+                }
+            }
+        }
+        ItemsChanged?.Invoke(amountItems);
     }
 }

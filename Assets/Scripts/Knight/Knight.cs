@@ -2,114 +2,100 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using DG.Tweening;
 
 public class Knight : Container
 {
-    [SerializeField] private int _needSwords;
-    [SerializeField] private float _speed;
-    [SerializeField] private BoxCollider _collider;
-    [SerializeField] private GameObject _moneyPrefab;
-    [SerializeField] private Transform _moneySpawn;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Sword _sword;
-    [SerializeField] private float _secondForJump;
-    [SerializeField] private float _rotateDuration;
+    [SerializeField] private int _amountMoney;
+    [SerializeField] private Armor _armor;
+    [SerializeField] private Sprite _armorSign;
+    [SerializeField] private Transform _battlePosition;
+    [SerializeField] private Transform _middlePosition;
+    [SerializeField] private Shop _shop;
+    [SerializeField] private BattleKnight _battleKnight;
 
-    private float _currentSpeed;
-    private bool _isFill = false;
-    private bool _isStop;
-    private float _ellapsedTime;
-    private Vector3 _direction;
-    private Vector3 _directionToStore = new Vector3(0f, 1f, 0f);
-    private Vector3 _directionToBattle = new Vector3(0f, 181f, 0f);
+    private CashDesk _cashDesk;
 
-    private const float ZTopBoard = 18f;
-    private const float ZDownBoard = 12f;
-    private const string WalkAnimation = "Walk";
-    private const string JumpAnimation = "Jump";
+    public Sprite ArmorSign => _armorSign;
 
-    public int NeedSwords => _needSwords;
-    public event UnityAction<int> SwordsChanged;
+    public event UnityAction Jumped;
+    public event UnityAction<bool> Attacked;
+    public event UnityAction<Transform> Moved;
 
     private void Start()
     {
-        _currentSpeed = _speed;
-        _ellapsedTime = _secondForJump;
-        transform.rotation = Quaternion.LookRotation(Vector3.forward);
-        RunToStore();
+        ReportChange();
+        PlaceItems();
     }
 
     private void Update()
     {
-        _ellapsedTime += Time.deltaTime;
-        transform.Translate(_direction * _currentSpeed * Time.deltaTime);
-        if (transform.position.z < ZDownBoard && !_isFill)
-            Stop();
-        if (transform.position.z > ZTopBoard && _isFill)
-            RunToStore();
-        if (_isFill && _isStop && _ellapsedTime > _secondForJump )     
-            RunToBattle();
-        if (!_isStop && _currentSpeed < _speed)
-            _currentSpeed += Time.deltaTime;
+        CheckPosition();
     }
 
-    private void OnTriggerStay(Collider other)
+    protected override void PlaceItems()
     {
-        Container container;
-        if (other.TryGetComponent<Container>(out container) && Items.Count < _needSwords)
+        base.PlaceItems();
+        CheckPosition();
+    }
+
+    private void CheckPosition()
+    {
+        if (IsEmpty)
         {
-            Take(container);
-            SwordsChanged?.Invoke(Items.Count);
+            if (_cashDesk == null)
+            {
+                if (_shop.TryFreePosition(out _cashDesk))
+                {
+                    _cashDesk.Reserve();
+                    _armor.gameObject.SetActive(false);
+                    _battleKnight.enabled = false;
+                    Attacked?.Invoke(false);
+                    Moved?.Invoke(_middlePosition);
+                }
+                else
+                {
+                    Attacked?.Invoke(true);
+                    _battleKnight.enabled = true;
+                }
+            }
+            else
+            {
+                if (IsReachedPosition(_middlePosition))
+                {
+                    Moved?.Invoke(_cashDesk.ClientPosition);
+                }
+                if (IsReachedPosition(_cashDesk.ClientPosition))
+                {
+                    _cashDesk.SetBusy(this);
+                }
+            }
         }
-        else if (Items.Count == _needSwords && !_isFill)
+        if (IsFull)
         {
-            SwordsChanged?.Invoke(Items.Count);
-            _isFill = true;
-            _ellapsedTime = 0;
-            _sword.gameObject.SetActive(true);
-            Jump(); 
+            if (_cashDesk != null)
+            {
+                if (IsReachedPosition(_cashDesk.ClientPosition))
+                {
+                    _cashDesk = null;
+                    _armor.gameObject.SetActive(true);
+                    Jumped?.Invoke();
+                    Moved?.Invoke(_middlePosition);
+                }
+            }
+            if (IsReachedPosition(_middlePosition))
+            {
+                Moved?.Invoke(_battlePosition);
+            }
+            if (IsReachedPosition(_battlePosition))
+            {
+                _battleKnight.enabled = true;
+                Attacked?.Invoke(true);
+            }
         }
     }
 
-    private void RunToStore()
+    private bool IsReachedPosition(Transform neededPosition)
     {
-        Items.Clear();
-        if (_isFill)
-        {
-            transform.DORotate(_directionToStore, 0);
-            _isFill = false;
-        }
-        _collider.enabled = true;
-        _sword.gameObject.SetActive(false);
-        _animator.SetBool(WalkAnimation, true);
-        _direction = Vector3.back;
-    }
-
-    private void Jump()
-    {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward);
-        _animator.SetBool(JumpAnimation, true);
-    }
-
-    private void RunToBattle()
-    {
-        _isStop = false;
-        _animator.SetBool(JumpAnimation, false);
-        Instantiate(_moneyPrefab, _moneySpawn.position, Quaternion.identity);
-        _collider.enabled = false;
-        _animator.SetBool(WalkAnimation, true);
-        _direction = Vector3.back;
-        transform.DORotate(_directionToBattle, _rotateDuration);
-    }
-
-    private void Stop()
-    {
-        _currentSpeed = 0;
-        transform.rotation = Quaternion.LookRotation(Vector3.back);
-        _direction = Vector3.zero;
-        SwordsChanged?.Invoke(Items.Count);
-        _animator.SetBool(WalkAnimation, false);
-        _isStop = true;
+        return transform.position == neededPosition.position;
     }
 }

@@ -24,7 +24,7 @@ public class PlayerMover : MonoBehaviour
         if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
         {
             _rigibody.velocity = new Vector3(_joystick.Horizontal * _speed, _rigibody.velocity.y, _joystick.Vertical * _speed);
-            transform.rotation = Quaternion.LookRotation(-_rigibody.velocity);
+            transform.rotation = Quaternion.LookRotation(_rigibody.velocity);
             Walked?.Invoke();
         }    
         else

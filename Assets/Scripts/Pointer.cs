@@ -10,10 +10,10 @@ public class Pointer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Trigger trigger;
-        if (other.TryGetComponent<Trigger>(out trigger))
+        TriggerAnimation trigger;
+        if (other.TryGetComponent<TriggerAnimation>(out trigger))
         {
-            _target = trigger.GetNextTriggerTransform();
+            //_target = trigger.GetNextTriggerTransform();
             _countTargets--;
         }
     }

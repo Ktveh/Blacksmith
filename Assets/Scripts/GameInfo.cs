@@ -50,7 +50,7 @@ public class GameInfo : MonoBehaviour
 
     private void CahngeSlider(int count)
     {
-        if (((float)count / (float)_knight.NeedSwords) == 1)
+        if (((float)count / (float)_knight.Limit) == 1)
         {
             float targetValue = _slider.value + _addedValue;
             StartChangeSliderValue(targetValue);

@@ -5,15 +5,23 @@ using UnityEngine.Events;
 
 public class Player : Container
 {
-    private int _money = 10;
+    [SerializeField] private int _money;
 
     public event UnityAction Taked;
     public event UnityAction Gived;
     public event UnityAction<int> MoneyChanged;
 
-    public void AddMoney()
+    public int Money => _money;
+
+    public void AddMoney(int money)
     {
-        _money++;
+        _money += money;
+        MoneyChanged?.Invoke(_money);
+    }
+
+    public void SubMoney(int money)
+    {
+        _money -= money;
         MoneyChanged?.Invoke(_money);
     }
 

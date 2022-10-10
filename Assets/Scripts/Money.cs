@@ -39,7 +39,7 @@ public class Money : MonoBehaviour
             }
             else
             {
-                _target.AddMoney();
+                _target.AddMoney(1);
                 Destroy(gameObject);
             }
         }
