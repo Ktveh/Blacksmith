@@ -10,6 +10,7 @@ public class HelpTrigger : Trigger
     [SerializeField] private Image _helpWindow;
     [SerializeField] private TextMeshProUGUI _helpTMPro;
     [SerializeField] private string _text;
+    [SerializeField] private bool _isLast;
 
     private const float MaxImageScale = 5;
     private const float MinImageScale = 0;
@@ -24,6 +25,10 @@ public class HelpTrigger : Trigger
 
     protected override void Active()
     {
+        if (_isLast)
+        {
+            _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
+        }
         base.Active();
     }
 }

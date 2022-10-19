@@ -10,6 +10,7 @@ public class Converter : MonoBehaviour
     public virtual Item Convert(Item currentItem)
     {
         Item newItem = Instantiate(_outputItem, currentItem.transform.position, currentItem.transform.rotation);
+        newItem.Align();
         Destroy(currentItem.gameObject);
         return newItem;
     }

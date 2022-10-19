@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Knight : Container
+public class Knight : RecipientContainer
 {
-    [SerializeField] private int _amountMoney;
     [SerializeField] private Armor _armor;
     [SerializeField] private Sprite _armorSign;
     [SerializeField] private Transform _battlePosition;
     [SerializeField] private Transform _middlePosition;
     [SerializeField] private Shop _shop;
-    [SerializeField] private BattleKnight _battleKnight;
 
     private CashDesk _cashDesk;
+    private Transform _target;
+    private bool _isWin;
+    private bool _isBuy;
 
     public Sprite ArmorSign => _armorSign;
+    public bool IsWin => _isWin;
+    public bool IsBuy => _isBuy;
+    public Transform Target => _target;
+    public Transform MiddlePosition => _middlePosition;
 
     public event UnityAction Jumped;
     public event UnityAction<bool> Attacked;
@@ -23,79 +28,44 @@ public class Knight : Container
 
     private void Start()
     {
+        _isWin = false;
+        _isBuy = false;
         ReportChange();
         PlaceItems();
     }
 
-    private void Update()
+    public bool TryFindCashDesk()
     {
-        CheckPosition();
-    }
-
-    protected override void PlaceItems()
-    {
-        base.PlaceItems();
-        CheckPosition();
-    }
-
-    private void CheckPosition()
-    {
-        if (IsEmpty)
+        if (_shop.TryFreePosition(out _cashDesk))
         {
-            if (_cashDesk == null)
-            {
-                if (_shop.TryFreePosition(out _cashDesk))
-                {
-                    _cashDesk.Reserve();
-                    _armor.gameObject.SetActive(false);
-                    _battleKnight.enabled = false;
-                    Attacked?.Invoke(false);
-                    Moved?.Invoke(_middlePosition);
-                }
-                else
-                {
-                    Attacked?.Invoke(true);
-                    _battleKnight.enabled = true;
-                }
-            }
-            else
-            {
-                if (IsReachedPosition(_middlePosition))
-                {
-                    Moved?.Invoke(_cashDesk.ClientPosition);
-                }
-                if (IsReachedPosition(_cashDesk.ClientPosition))
-                {
-                    _cashDesk.SetBusy(this);
-                }
-            }
+            _cashDesk.Reserve();
+            _target = _cashDesk.ClientPosition;
+            _armor.gameObject.SetActive(false);
+            _isBuy = true;
+            return true;
         }
-        if (IsFull)
+        return false;
+    }
+
+    public void SetBusyCashDesk()
+    {
+        if (_cashDesk != null)
         {
-            if (_cashDesk != null)
-            {
-                if (IsReachedPosition(_cashDesk.ClientPosition))
-                {
-                    _cashDesk = null;
-                    _armor.gameObject.SetActive(true);
-                    Jumped?.Invoke();
-                    Moved?.Invoke(_middlePosition);
-                }
-            }
-            if (IsReachedPosition(_middlePosition))
-            {
-                Moved?.Invoke(_battlePosition);
-            }
-            if (IsReachedPosition(_battlePosition))
-            {
-                _battleKnight.enabled = true;
-                Attacked?.Invoke(true);
-            }
+            transform.LookAt(_cashDesk.transform);
+            _cashDesk.SetBusy(this);
         }
     }
 
-    private bool IsReachedPosition(Transform neededPosition)
+    public void TakeArmor()
     {
-        return transform.position == neededPosition.position;
+        _isBuy = false;
+        _cashDesk.SetFree();
+        _armor.gameObject.SetActive(true);
+        _target = _battlePosition;
+    }
+
+    public void Win()
+    {
+        _isWin = true;
     }
 }
