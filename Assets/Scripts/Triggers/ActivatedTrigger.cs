@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ActivatedTrigger : Trigger
+public class ActivatedTrigger : PayTrigger
 {
     [SerializeField] private GameObject _activatedObject;
 

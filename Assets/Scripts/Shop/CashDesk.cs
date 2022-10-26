@@ -59,10 +59,12 @@ public class CashDesk : MonoBehaviour
 
     private void TakeCoin(int amount)
     {
+        Vector3 _startSpawnPosition = _spawnPosition.position;
         for (int i = 0; i < amount; i++)
         {
             Instantiate(_coin, _spawnPosition.position, Quaternion.identity);
             _spawnPosition.position = new Vector3(_spawnPosition.position.x, _spawnPosition.position.y + i, _spawnPosition.position.z);
         }
+        _spawnPosition.position = _startSpawnPosition;
     }
 }

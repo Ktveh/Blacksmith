@@ -10,13 +10,14 @@ public class HelpTrigger : Trigger
     [SerializeField] private Image _helpWindow;
     [SerializeField] private TextMeshProUGUI _helpTMPro;
     [SerializeField] private string _text;
+    [SerializeField] private HelpTrigger _nextHelpTrigger;
     [SerializeField] private bool _isLast;
 
     private const float MaxImageScale = 5;
     private const float MinImageScale = 0;
     private const float DurationChangeImage = 0.3f;
 
-    private void Awake()
+    private void OnEnable()
     {
         _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
         _helpWindow.gameObject.transform.DOScaleX(MaxImageScale, DurationChangeImage).SetDelay(DurationChangeImage);
@@ -28,6 +29,10 @@ public class HelpTrigger : Trigger
         if (_isLast)
         {
             _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
+        }
+        else
+        {
+            _nextHelpTrigger.gameObject.SetActive(true);
         }
         base.Active();
     }

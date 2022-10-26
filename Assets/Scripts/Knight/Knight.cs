@@ -22,10 +22,6 @@ public class Knight : RecipientContainer
     public Transform Target => _target;
     public Transform MiddlePosition => _middlePosition;
 
-    public event UnityAction Jumped;
-    public event UnityAction<bool> Attacked;
-    public event UnityAction<Transform> Moved;
-
     private void Start()
     {
         _isWin = false;
@@ -53,6 +49,7 @@ public class Knight : RecipientContainer
         {
             transform.LookAt(_cashDesk.transform);
             _cashDesk.SetBusy(this);
+            ReportChange();
         }
     }
 

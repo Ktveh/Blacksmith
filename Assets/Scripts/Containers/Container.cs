@@ -41,12 +41,12 @@ public class Container : MonoBehaviour
         }
     } 
 
-    public void LimitUpgrade(int increase)
+    public virtual void LimitUpgrade(int increase)
     {
         _limit += increase;
     }
 
-    public void DelayUpgrade(float decrease)
+    public virtual void DelayUpgrade(float decrease)
     {
         Delay -= decrease;
     }

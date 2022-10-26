@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class UpgradeTrigger : Trigger
+public class UpgradeTrigger : PayTrigger
 {
     [SerializeField] private Container _upgradeContainer;
     [SerializeField] private bool _isLimitUpgrade;

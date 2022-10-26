@@ -6,7 +6,7 @@ using TMPro;
 public class TriggerInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _price;
-    [SerializeField] private Trigger _trigger;
+    [SerializeField] private PayTrigger _trigger;
 
     private void Start()
     {

@@ -5,13 +5,27 @@ using UnityEngine.Events;
 
 public class Player : RecipientContainer
 {
-    [SerializeField] private int _money;
+    private int _money;
+    private int _currentLimit;
 
     public event UnityAction Taked;
     public event UnityAction Gived;
     public event UnityAction<int> MoneyChanged;
 
     public int Money => _money;
+
+    private void Start()
+    {
+        _money = PlayerPrefs.GetInt(Save.Money);
+        _currentLimit = PlayerPrefs.GetInt(Save.Limit);
+
+        if (_currentLimit > Limit)
+        {
+            LimitUpgrade(_currentLimit - Limit);
+        }
+
+        MoneyChanged?.Invoke(_money);
+    }
 
     public void AddMoney(int money)
     {
@@ -38,5 +52,11 @@ public class Player : RecipientContainer
         base.Take(donor);
         if (!IsEmpty)
             Taked?.Invoke();
+    }
+
+    public override void LimitUpgrade(int increase)
+    {
+        base.LimitUpgrade(increase);
+        _currentLimit = Limit;
     }
 }
