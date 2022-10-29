@@ -18883,7 +18883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1686441377}
-  _offset: {x: 0, y: 2}
+  _offset: {x: 0, y: 2.5}
 --- !u!114 &1686441382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7189789488471311437, guid: cf6da6bb686c1864bbe827bf7dc1360c, type: 3}
@@ -22487,7 +22487,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 0.67970204, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

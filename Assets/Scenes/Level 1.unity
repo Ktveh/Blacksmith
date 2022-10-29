@@ -2744,7 +2744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &504830087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17880,7 +17880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1686441377}
-  _offset: {x: 0, y: 2}
+  _offset: {x: 0, y: 2.5}
 --- !u!114 &1686441382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7189789488471311437, guid: cf6da6bb686c1864bbe827bf7dc1360c, type: 3}
@@ -17950,8 +17950,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.019999998, y: 0.023499234, z: 0.020000014}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.019999998, y: 0.021753095, z: 0.020000014}
+  m_Center: {x: 0, y: -0.0001401397, z: 0}
 --- !u!114 &1703112176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21508,7 +21508,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.0015037, y: 1}
+    m_SensorSize: {x: 0.6214511, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

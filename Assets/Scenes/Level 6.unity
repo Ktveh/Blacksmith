@@ -26853,7 +26853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1686441377}
-  _offset: {x: 0, y: 2}
+  _offset: {x: 0, y: 2.5}
 --- !u!114 &1686441382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7189789488471311437, guid: cf6da6bb686c1864bbe827bf7dc1360c, type: 3}
@@ -30544,6 +30544,47 @@ PrefabInstance:
       objectReference: {fileID: -5277872522582311895, guid: 293c80e359b420c4ea3b0d27c415925a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7bfa427cea41d4a8d384eb004e0314, type: 3}
+--- !u!114 &1901048200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 424110802433706563, guid: 9a7bfa427cea41d4a8d384eb004e0314, type: 3}
+  m_PrefabInstance: {fileID: 1901048199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1901048201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 424110802169704049, guid: 9a7bfa427cea41d4a8d384eb004e0314, type: 3}
+  m_PrefabInstance: {fileID: 1901048199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1901048202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 424110803979935006, guid: 9a7bfa427cea41d4a8d384eb004e0314, type: 3}
+  m_PrefabInstance: {fileID: 1901048199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455a5a275a94a2044a3f8ee0326b0474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1901048203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901048201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51cd0105c389c24689cf45e746809e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 1901048202}
+  _valueTMPro: {fileID: 1901048200}
 --- !u!1001 &1903126743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30647,7 +30688,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 0.95268136, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
