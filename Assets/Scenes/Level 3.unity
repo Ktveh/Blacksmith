@@ -26744,7 +26744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884240917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26861,7 +26861,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5452436, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -30628,7 +30628,7 @@ PrefabInstance:
       objectReference: {fileID: 1471508882}
     - target: {fileID: 2251657303172905863, guid: d376f8c2bc598cc449038cac9fc6634b, type: 3}
       propertyPath: _needCoin
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2251657303172905863, guid: d376f8c2bc598cc449038cac9fc6634b, type: 3}
       propertyPath: _yesButon

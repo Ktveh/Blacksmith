@@ -5331,7 +5331,7 @@ PrefabInstance:
       objectReference: {fileID: 1471508882}
     - target: {fileID: 1163287141666595232, guid: 224b7a72a9e3f974887c59c11ebf6c95, type: 3}
       propertyPath: _needCoin
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1163287141666595232, guid: 224b7a72a9e3f974887c59c11ebf6c95, type: 3}
       propertyPath: _yesButon
@@ -27215,7 +27215,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5452436, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
