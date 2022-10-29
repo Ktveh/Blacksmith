@@ -23,5 +23,6 @@ public class NextLevel : MonoBehaviour
         PlayerPrefs.SetInt(Save.Money, _player.Money);
         PlayerPrefs.SetInt(Save.Limit, _player.Limit);
         PlayerPrefs.SetInt(Save.Level, _nextScene);
+        PlayerPrefs.SetString(Save.Hat, _player.CurrentHat);
     }
 }

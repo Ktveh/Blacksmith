@@ -5,19 +5,25 @@ using UnityEngine.Events;
 
 public class Player : RecipientContainer
 {
+    [SerializeField] private List<Hat> _hats;
+
     private int _money;
     private int _currentLimit;
+    private string _currentHat;
 
     public event UnityAction Taked;
     public event UnityAction Gived;
     public event UnityAction<int> MoneyChanged;
 
     public int Money => _money;
+    public string CurrentHat => _currentHat;
 
     private void Start()
     {
         _money = PlayerPrefs.GetInt(Save.Money);
         _currentLimit = PlayerPrefs.GetInt(Save.Limit);
+
+        ChangeHat(PlayerPrefs.GetString(Save.Hat));
 
         if (_currentLimit > Limit)
         {
@@ -37,6 +43,20 @@ public class Player : RecipientContainer
     {
         _money -= money;
         MoneyChanged?.Invoke(_money);
+    }
+
+    public void ChangeHat(string hatName)
+    {
+        foreach (Hat hat in _hats)
+        {
+            hat.gameObject.SetActive(false);
+            if (hat.Name == hatName)
+            {
+                _currentHat = hat.Name;
+                hat.gameObject.SetActive(true);
+            }
+        }
+
     }
 
     public override Item Give(Item neededItem)

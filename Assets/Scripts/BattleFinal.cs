@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleFinal : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BattleFinal : MonoBehaviour
     [SerializeField] private List<Knight> _knights;
     [SerializeField] private ParticleSystem _winEffect;
     [SerializeField] private Container _battle;
+    [SerializeField] private Image _rewardPanel;
 
     private void OnEnable()
     {
@@ -46,5 +48,7 @@ public class BattleFinal : MonoBehaviour
         {
             knight.Win();
         }
+
+        _rewardPanel.gameObject.SetActive(true);
     }
 }

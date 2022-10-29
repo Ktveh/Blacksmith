@@ -24,6 +24,7 @@ public class Knight : RecipientContainer
 
     private void Start()
     {
+        _target = transform;
         _isWin = false;
         _isBuy = false;
         ReportChange();
