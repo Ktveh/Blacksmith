@@ -23757,19 +23757,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cbfc0e0448e9e444ab6e943c1aef156c, type: 3}
   m_PrefabInstance: {fileID: 1217509419}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1703112175
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703112171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019999998, y: 0.023499234, z: 0.020000014}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1703112176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23785,6 +23772,20 @@ MonoBehaviour:
   _cashDesks:
   - {fileID: 2031870841}
   - {fileID: 1647004848}
+--- !u!64 &1703112177
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703112171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: cbfc0e0448e9e444ab6e943c1aef156c, type: 3}
 --- !u!1001 &1704877505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27215,7 +27216,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 0.58832806, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

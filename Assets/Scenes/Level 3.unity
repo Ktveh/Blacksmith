@@ -980,8 +980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cashDesks:
   - {fileID: 694004593}
---- !u!65 &38427122
-BoxCollider:
+--- !u!64 &38427122
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -990,9 +990,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019999998, y: 0.023499234, z: 0.020000014}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: cbfc0e0448e9e444ab6e943c1aef156c, type: 3}
 --- !u!4 &44025795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8638123388977367435, guid: 847e3d3fde19f6b49a19236c56d0ff66, type: 3}
@@ -23147,19 +23148,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cbfc0e0448e9e444ab6e943c1aef156c, type: 3}
   m_PrefabInstance: {fileID: 1217509419}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1703112175
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703112171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019999998, y: 0.023499234, z: 0.020000014}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1703112176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23175,6 +23163,20 @@ MonoBehaviour:
   _cashDesks:
   - {fileID: 2031870841}
   - {fileID: 1647004848}
+--- !u!64 &1703112177
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703112171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: cbfc0e0448e9e444ab6e943c1aef156c, type: 3}
 --- !u!1 &1714329488
 GameObject:
   m_ObjectHideFlags: 0
@@ -26861,7 +26863,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.67970204, y: 1}
+    m_SensorSize: {x: 0.58832806, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
