@@ -97,3 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Gibus
+  _icon: {fileID: 21300000, guid: b8a308856e52c134b8b1cda661594d48, type: 3}

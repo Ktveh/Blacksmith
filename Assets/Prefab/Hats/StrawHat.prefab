@@ -97,3 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Strawhat
+  _icon: {fileID: 21300000, guid: fa82ac14da8d08b418d33a465c02f9ee, type: 3}

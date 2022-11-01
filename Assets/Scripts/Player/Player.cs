@@ -23,8 +23,6 @@ public class Player : RecipientContainer
         _money = PlayerPrefs.GetInt(Save.Money);
         _currentLimit = PlayerPrefs.GetInt(Save.Limit);
 
-        ChangeHat(PlayerPrefs.GetString(Save.Hat));
-
         if (_currentLimit > Limit)
         {
             LimitUpgrade(_currentLimit - Limit);

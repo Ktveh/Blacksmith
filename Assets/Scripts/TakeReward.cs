@@ -7,6 +7,7 @@ using TMPro;
 public class TakeReward : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private HatsHanger _hanger;
     [SerializeField] private Image _panel;
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _text;
@@ -58,7 +59,7 @@ public class TakeReward : MonoBehaviour
         }
         if (_isHatReward)
         {
-            _player.ChangeHat(_hat.Name);
+            _hanger.UnlockHat(_hat);
         }
         _button.gameObject.SetActive(false);
     }

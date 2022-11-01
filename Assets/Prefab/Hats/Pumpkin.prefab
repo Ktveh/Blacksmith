@@ -297,3 +297,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Pumpkin
+  _icon: {fileID: 21300000, guid: 5e595232c0a3abd4091ed7fae45f261d, type: 3}
