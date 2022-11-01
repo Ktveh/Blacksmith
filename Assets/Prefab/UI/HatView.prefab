@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 987241464716397118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.14, z: 0.14}
+  m_LocalScale: {x: 0.075912, y: 0.177128, z: 0.177128}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 868190621079688772}
@@ -284,15 +284,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bbb756a5980d7604196ca2bdee0b9ab7, type: 2}
-  m_sharedMaterial: {fileID: -8662837273033144585, guid: bbb756a5980d7604196ca2bdee0b9ab7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294115307
+  m_fontColor: {r: 0.9198113, g: 1, b: 0.95010483, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -313,9 +313,9 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 16
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

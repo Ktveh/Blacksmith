@@ -35,15 +35,15 @@ public class TakeReward : MonoBehaviour
     {
         if (_isLimitReward)
         {
-            _text.text = $"Limit +{_limit}";
+            _text.text = $"{Lean.Localization.LeanLocalization.GetTranslationText("Limit")} +{_limit}";
         }
         if (_isMoneyReward)
         {
-            _text.text = $"Money +{_money}";
+            _text.text = $"{Lean.Localization.LeanLocalization.GetTranslationText("Coins")} +{_money}";
         }
         if (_isHatReward)
         {
-            _text.text = $"Hat '{_hat.Name}'";
+            _text.text = $"{Lean.Localization.LeanLocalization.GetTranslationText("Hat")} '{Lean.Localization.LeanLocalization.GetTranslationText(_hat.Name)}'";
         }
     }
 

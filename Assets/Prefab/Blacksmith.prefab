@@ -760,6 +760,7 @@ MonoBehaviour:
   FirstElementPosition: {fileID: 4483765240484496117}
   Items: []
   _hats:
+  - {fileID: 3761720714863002004, guid: d2c49b7ea55ec9046b738acf3f288a66, type: 3}
   - {fileID: 3254296852145248335}
   - {fileID: 5828468123619000247}
   - {fileID: 2268816300324270131}

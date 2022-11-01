@@ -52,7 +52,7 @@ public class PayTrigger : MonoBehaviour
         _questionImage.gameObject.SetActive(true);
         _yesButon.onClick.AddListener(Active);
         _noButon.onClick.AddListener(CloseQuestion);
-        _questionTMPro.text = $"Buy for {_needCoin}";
+        _questionTMPro.text = $"{Lean.Localization.LeanLocalization.GetTranslationText("Buy for")} {_needCoin}";
     }
 
     protected virtual void Active()

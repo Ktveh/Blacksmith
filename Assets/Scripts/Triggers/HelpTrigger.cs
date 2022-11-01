@@ -21,7 +21,7 @@ public class HelpTrigger : Trigger
     {
         _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
         _helpWindow.gameObject.transform.DOScaleX(MaxImageScale, DurationChangeImage).SetDelay(DurationChangeImage);
-        _helpTMPro.text = _text;
+        _helpTMPro.text = Lean.Localization.LeanLocalization.GetTranslationText(_text);
     }
 
     protected override void Active()

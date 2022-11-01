@@ -31,7 +31,7 @@ public class HatView : MonoBehaviour
     {
         _hatsHanger = hanger;
         _icon.sprite = hat.Icon;
-        _name.text = hat.Name;
+        _name.text = Lean.Localization.LeanLocalization.GetTranslationText(hat.Name);
     }
 
     private void OnButtonClick()
