@@ -846,6 +846,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _money
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _hanger
+      value: 
+      objectReference: {fileID: 1585433925}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 172580737}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isLimitReward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isMoneyReward
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2614922176265759170, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _player
       value: 
@@ -858,6 +878,14 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 172580737}
+    - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isLimitReward
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isMoneyReward
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2614922176634136599, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _player
       value: 
@@ -4653,7 +4681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _amount: {x: 5, y: 5, z: 5}
   _indent: {x: 0, y: 0, z: 0}
-  _limit: 30
+  _limit: 3
   Delay: 1
   NeededItems:
   - {fileID: 396650912815956492, guid: bde85177ded639745b59f2b6af7aad15, type: 3}
@@ -20401,7 +20429,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.72397476, y: 1}
+    m_SensorSize: {x: 0.9305994, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22274,6 +22302,14 @@ PrefabInstance:
     - target: {fileID: 2707255554732721612, guid: eeb3594c99e509843a65a1ba7e9d65af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075562129831824289, guid: eeb3594c99e509843a65a1ba7e9d65af, type: 3}
+      propertyPath: saveLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075562129831824289, guid: eeb3594c99e509843a65a1ba7e9d65af, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeb3594c99e509843a65a1ba7e9d65af, type: 3}

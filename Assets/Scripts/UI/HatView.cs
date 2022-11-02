@@ -10,6 +10,7 @@ public class HatView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private Button _button;
 
+    private Hat _hat;
     private HatsHanger _hatsHanger;
 
     private void OnEnable()
@@ -27,15 +28,15 @@ public class HatView : MonoBehaviour
         _hatsHanger = hanger;
     }
 
-    public void Render(Hat hat, HatsHanger hanger)
+    public void Render(Hat hat)
     {
-        _hatsHanger = hanger;
+        _hat = hat;
         _icon.sprite = hat.Icon;
         _name.text = Lean.Localization.LeanLocalization.GetTranslationText(hat.Name);
     }
 
     private void OnButtonClick()
     {
-        _hatsHanger.SelectHat(_name.text);
+        _hatsHanger.SelectHat(_hat.Name);
     }
 }

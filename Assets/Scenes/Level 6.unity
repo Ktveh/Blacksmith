@@ -9396,7 +9396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _amount: {x: 5, y: 5, z: 5}
   _indent: {x: 0, y: 0, z: 0}
-  _limit: 40
+  _limit: 4
   Delay: 1
   NeededItems:
   - {fileID: 396650912815956492, guid: bde85177ded639745b59f2b6af7aad15, type: 3}
@@ -14772,6 +14772,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _money
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _hanger
       value: 
       objectReference: {fileID: 825838043}
@@ -14779,10 +14783,22 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 172580737}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isLimitReward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isMoneyReward
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2614922176265759170, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 172580737}
+    - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _hat
+      value: 
+      objectReference: {fileID: 955665912737902175, guid: 97ea6dbadbb09a642aee0396321cc51f, type: 3}
     - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _hanger
       value: 
@@ -14791,6 +14807,14 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 172580737}
+    - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isHatReward
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614922176626685594, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
+      propertyPath: _isMoneyReward
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2614922176634136599, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _player
       value: 
@@ -25768,6 +25792,7 @@ MonoBehaviour:
   _cashDesks:
   - {fileID: 2031870841}
   - {fileID: 1647004848}
+  - {fileID: 163701658}
 --- !u!64 &1703112177
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28808,7 +28833,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.72397476, y: 1}
+    m_SensorSize: {x: 0.9305994, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

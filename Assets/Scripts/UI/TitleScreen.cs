@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
+    [SerializeField] private Player _player;
     [SerializeField] private Canvas _mainCanvas;
     [SerializeField] private Trigger _firstTrigger;
     [SerializeField] private CameraMover _titleCamera;
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _newGameButton;
-
-    private bool _cameraIsMove;
 
     private const int StartMoney = 0;
     private const int StartLimit = 4;
@@ -20,7 +19,6 @@ public class TitleScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        _cameraIsMove = false;
         _continueButton.onClick.AddListener(OnContinueButtonClick);
         _newGameButton.onClick.AddListener(OnNewGameButtonClick);
 
@@ -32,6 +30,7 @@ public class TitleScreen : MonoBehaviour
 
     private void OnDisable()
     {
+        _player.gameObject.SetActive(true);
         _mainCanvas.gameObject.SetActive(true);
         _firstTrigger.gameObject.SetActive(true);
         _titleCamera.StartMove();
@@ -42,7 +41,7 @@ public class TitleScreen : MonoBehaviour
     private void OnContinueButtonClick()
     {
         int level = PlayerPrefs.GetInt(Save.Level);
-        if (level == 1)
+        if (level == 0)
         {
             gameObject.SetActive(false);
         }

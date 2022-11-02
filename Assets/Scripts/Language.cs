@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Agava.YandexGames;
 
 public class Language : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _text;
+
     private const float WaitTime = 0.25f;
     private const string EnglishCode = "en";
     private const string RussianCode = "ru";
@@ -16,7 +19,12 @@ public class Language : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
     private IEnumerator Start()
     {
-        while (YandexGamesSdk.IsInitialized)
+        if (YandexGamesSdk.IsInitialized)
+        {
+            ChangeLanguage();
+        }
+
+        while (!YandexGamesSdk.IsInitialized)
         {
             yield return new WaitForSeconds(WaitTime);
             if (YandexGamesSdk.IsInitialized)
@@ -30,6 +38,7 @@ public class Language : MonoBehaviour
     private void ChangeLanguage()
     {
         string languageCode = YandexGamesSdk.Environment.i18n.lang;
+        _text.text = languageCode;
         string language;
         switch (languageCode)
         {

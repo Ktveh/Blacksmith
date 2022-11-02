@@ -78,6 +78,7 @@ public class HatsHanger : MonoBehaviour
                 _unlockHats[i] = false;
             }
         }
+        _unlockHats[0] = true;
     }
 
     public void SaveHats()
@@ -121,6 +122,7 @@ public class HatsHanger : MonoBehaviour
     private void AddHat(Hat hat)
     {
         var view = Instantiate(_template, _content.transform);
-        view.Render(hat, this);
+        view.Render(hat);
+        view.SetHanget(this);
     }
 }

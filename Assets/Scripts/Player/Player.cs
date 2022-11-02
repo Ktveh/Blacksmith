@@ -22,6 +22,8 @@ public class Player : RecipientContainer
     {
         _money = PlayerPrefs.GetInt(Save.Money);
         _currentLimit = PlayerPrefs.GetInt(Save.Limit);
+        _currentHat = PlayerPrefs.GetString(Save.CurrentHat);
+        ChangeHat(_currentHat);
 
         if (_currentLimit > Limit)
         {
@@ -52,9 +54,9 @@ public class Player : RecipientContainer
             {
                 _currentHat = hat.Name;
                 hat.gameObject.SetActive(true);
+                PlayerPrefs.SetString(Save.CurrentHat, _currentHat);
             }
         }
-
     }
 
     public override Item Give(Item neededItem)
