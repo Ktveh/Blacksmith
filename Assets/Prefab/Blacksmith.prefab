@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _joystick: {fileID: 0}
-  _speed: 4
+  _speed: 5
 --- !u!1 &3736121224583657818
 GameObject:
   m_ObjectHideFlags: 0

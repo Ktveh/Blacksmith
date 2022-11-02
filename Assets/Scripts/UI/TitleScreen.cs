@@ -6,15 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
+    [SerializeField] private Canvas _mainCanvas;
+    [SerializeField] private Trigger _firstTrigger;
+    [SerializeField] private CameraMover _titleCamera;
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _newGameButton;
 
-    private const int _startMoney = 0;
-    private const int _startLimit = 4;
-    private const int _startLevel = 1;
+    private bool _cameraIsMove;
+
+    private const int StartMoney = 0;
+    private const int StartLimit = 4;
+    private const int StartLevel = 1;
 
     private void OnEnable()
     {
+        _cameraIsMove = false;
         _continueButton.onClick.AddListener(OnContinueButtonClick);
         _newGameButton.onClick.AddListener(OnNewGameButtonClick);
 
@@ -26,21 +32,31 @@ public class TitleScreen : MonoBehaviour
 
     private void OnDisable()
     {
+        _mainCanvas.gameObject.SetActive(true);
+        _firstTrigger.gameObject.SetActive(true);
+        _titleCamera.StartMove();
         _continueButton.onClick.RemoveListener(OnContinueButtonClick);
         _newGameButton.onClick.RemoveListener(OnNewGameButtonClick);
     }
 
     private void OnContinueButtonClick()
     {
-        SceneManager.LoadScene(PlayerPrefs.GetInt(Save.Level));
+        int level = PlayerPrefs.GetInt(Save.Level);
+        if (level == 1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetInt(Save.Level));
+        }
     }
 
     private void OnNewGameButtonClick()
     {
-        PlayerPrefs.SetInt(Save.Money, _startMoney);
-        PlayerPrefs.SetInt(Save.Limit, _startLimit);
-        PlayerPrefs.SetInt(Save.Level, _startLevel);
-
-        SceneManager.LoadScene(PlayerPrefs.GetInt(Save.Level));
+        PlayerPrefs.SetInt(Save.Money, StartMoney);
+        PlayerPrefs.SetInt(Save.Limit, StartLimit);
+        PlayerPrefs.SetInt(Save.Level, StartLevel);
+        gameObject.SetActive(false);
     }
 }
