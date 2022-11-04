@@ -19,6 +19,11 @@ public class HelpTrigger : Trigger
 
     private void OnEnable()
     {
+        
+    }
+
+    private void Start()
+    {
         _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
         _helpWindow.gameObject.transform.DOScaleX(MaxImageScale, DurationChangeImage).SetDelay(DurationChangeImage);
         _helpTMPro.text = Lean.Localization.LeanLocalization.GetTranslationText(_text);
