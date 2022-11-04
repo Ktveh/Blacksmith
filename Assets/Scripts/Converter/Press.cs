@@ -19,5 +19,6 @@ public class Press : Converter
     {
         _effect.Play();
         _animator.SetTrigger(PressAnimation);
+        Audio.Play();
     }
 }

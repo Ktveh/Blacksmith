@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Converter : MonoBehaviour
 {
     [SerializeField] private List<Item> _inputItems;
     [SerializeField] private List<Item> _outputItems;
+
+    protected AudioSource Audio;
+
+    private void Start()
+    {
+        Audio = GetComponent<AudioSource>();
+    }
 
     public virtual Item Convert(Item currentItem)
     {

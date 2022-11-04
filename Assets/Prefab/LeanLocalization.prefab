@@ -163,7 +163,7 @@ MonoBehaviour:
     Text: "\u0423\u0441\u043A\u043E\u0440\u0438\u0442\u044C"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "Geli\u015Ftirmek"
+    Text: Yenilik
     Object: {fileID: 0}
 --- !u!1 &8075562129734262261
 GameObject:
@@ -279,7 +279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8075562129831824290}
   - component: {fileID: 8075562129831824289}
-  - component: {fileID: 388109106291277974}
   m_Layer: 0
   m_Name: LeanLocalization
   m_TagString: Untagged
@@ -351,23 +350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Turkish
-  detectLanguage: 0
+  currentLanguage: Russian
+  detectLanguage: 1
   defaultLanguage: Turkish
   saveLoad: 1
   prefabs: []
---- !u!114 &388109106291277974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8075562129831824288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ccee39738ad36449c95cc19e62e8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8075562129907678126
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +684,7 @@ MonoBehaviour:
     Text: "\u041C\u043E\u043D\u0435\u0442\u044B"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: Madeni paralar
+    Text: Paralar
     Object: {fileID: 0}
 --- !u!1 &8075562130263018605
 GameObject:
@@ -1798,7 +1785,7 @@ MonoBehaviour:
     Text: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: Kaynaklar
+    Text: Kaynak
     Object: {fileID: 0}
 --- !u!1 &8075562131412068996
 GameObject:
@@ -1963,7 +1950,7 @@ MonoBehaviour:
     Text: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "Kilidini a\xE7"
+    Text: "A\xE7mak"
     Object: {fileID: 0}
 --- !u!1 &8075562131563410167
 GameObject:

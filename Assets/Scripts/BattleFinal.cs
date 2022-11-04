@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BattleFinal : MonoBehaviour
 {
+    [SerializeField] private AudioSource _audioBackGround;
+    [SerializeField] private AudioSource _audioFireworks;
+    [SerializeField] private AudioSource _audioWin;
     [SerializeField] private List<GameObject> _objectsForDisable;
     [SerializeField] private List<Knight> _knights;
     [SerializeField] private ParticleSystem _winEffect;
@@ -38,6 +41,9 @@ public class BattleFinal : MonoBehaviour
     private void EndBattle()
     {
         _winEffect.Play();
+        _audioFireworks.Play();
+        _audioWin.Play();
+        _audioBackGround.Stop();
 
         foreach (GameObject objectForDisable in _objectsForDisable)
         {

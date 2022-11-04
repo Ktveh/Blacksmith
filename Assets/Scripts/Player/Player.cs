@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Player : RecipientContainer
 {
+    [SerializeField] private AudioSource AudioCoin;
+    [SerializeField] private AudioSource AudioTake;
     [SerializeField] private List<Hat> _hats;
 
     private int _money;
@@ -37,6 +39,7 @@ public class Player : RecipientContainer
     {
         _money += money;
         MoneyChanged?.Invoke(_money);
+        AudioCoin.Play();
     }
 
     public void SubMoney(int money)
@@ -71,12 +74,20 @@ public class Player : RecipientContainer
     {
         base.Take(donor);
         if (!IsEmpty)
+        {
             Taked?.Invoke();
+        }
     }
 
     public override void LimitUpgrade(int increase)
     {
         base.LimitUpgrade(increase);
         _currentLimit = Limit;
+    }
+
+    protected override void PlaceItems()
+    {
+        AudioTake.Play();
+        base.PlaceItems();
     }
 }

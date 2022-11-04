@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Agava.YandexGames;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -13,12 +14,14 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _newGameButton;
 
+    private const float WaitTime = 0.25f;
     private const int StartMoney = 0;
     private const int StartLimit = 4;
     private const int StartLevel = 1;
 
     private void OnEnable()
     {
+        AudioListener.volume = 0;
         _continueButton.onClick.AddListener(OnContinueButtonClick);
         _newGameButton.onClick.AddListener(OnNewGameButtonClick);
 
@@ -36,6 +39,35 @@ public class TitleScreen : MonoBehaviour
         _titleCamera.StartMove();
         _continueButton.onClick.RemoveListener(OnContinueButtonClick);
         _newGameButton.onClick.RemoveListener(OnNewGameButtonClick);
+    }
+
+    private IEnumerator Start()
+    {
+#if !UNITY_WEBGL || UNITY_EDITOR
+        ShowButtons();
+        yield break;
+#endif
+
+        if (YandexGamesSdk.IsInitialized)
+        {
+            ShowButtons();
+        }
+
+        while (!YandexGamesSdk.IsInitialized)
+        {
+            yield return new WaitForSeconds(WaitTime);
+
+            if (YandexGamesSdk.IsInitialized)
+            {
+                ShowButtons();
+            }
+        }
+    }
+
+    private void ShowButtons()
+    {
+        _newGameButton.gameObject.SetActive(true);
+        _continueButton.gameObject.SetActive(true);
     }
 
     private void OnContinueButtonClick()

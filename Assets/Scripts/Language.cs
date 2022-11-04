@@ -16,9 +16,19 @@ public class Language : MonoBehaviour
     private const string RussianLanguage = "Russian";
     private const string TurkishLanguage = "Turkish";
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+    private void Awake()
+    {
+        YandexGamesSdk.CallbackLogging = true;
+    }
+
     private IEnumerator Start()
     {
+#if !UNITY_WEBGL || UNITY_EDITOR
+        yield break;
+#endif
+
+        yield return YandexGamesSdk.Initialize();
+
         if (YandexGamesSdk.IsInitialized)
         {
             ChangeLanguage();
@@ -27,13 +37,13 @@ public class Language : MonoBehaviour
         while (!YandexGamesSdk.IsInitialized)
         {
             yield return new WaitForSeconds(WaitTime);
+
             if (YandexGamesSdk.IsInitialized)
             {
                 ChangeLanguage();
             }
         }
     }
-#endif
 
     private void ChangeLanguage()
     {

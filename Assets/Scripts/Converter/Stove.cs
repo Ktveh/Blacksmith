@@ -15,5 +15,6 @@ public class Stove : Converter
     public void Active()
     {
         _effect.Play();
+        Audio.Play();
     }
 }
