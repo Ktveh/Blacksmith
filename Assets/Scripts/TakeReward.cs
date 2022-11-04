@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Agava.YandexGames;
 
 public class TakeReward : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class TakeReward : MonoBehaviour
 
     private void OnButtonClick()
     {
+        VideoAd.Show();
         if (_isLimitReward)
         {
             _player.LimitUpgrade(_limit);

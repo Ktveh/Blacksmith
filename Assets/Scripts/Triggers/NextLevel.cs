@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Agava.YandexGames;
 
 public class NextLevel : MonoBehaviour
 {
@@ -20,6 +21,16 @@ public class NextLevel : MonoBehaviour
 
     private void SaveProgress()
     {
+        int record = 0;
+        Leaderboard.GetPlayerEntry("PlaytestBoard", (result) =>
+        {
+            if (result != null)
+                record = result.score;
+        });
+        if (record < _player.Money)
+        {
+            Leaderboard.SetScore("PlaytestBoard", _player.Money);
+        }
         PlayerPrefs.SetInt(Save.Money, _player.Money);
         PlayerPrefs.SetInt(Save.Limit, _player.Limit);
         PlayerPrefs.SetInt(Save.Level, _nextScene);
