@@ -6317,7 +6317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _amount: {x: 5, y: 5, z: 5}
   _indent: {x: 0, y: 0, z: 0}
-  _limit: 4
+  _limit: 40
   Delay: 1
   NeededItems:
   - {fileID: 396650912815956492, guid: bde85177ded639745b59f2b6af7aad15, type: 3}
@@ -14117,7 +14117,7 @@ PrefabInstance:
       objectReference: {fileID: 5567906223900037004, guid: 2392becf9d3d38d43a73fcf7c8ad47aa, type: 3}
     - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _money
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2614922175447496682, guid: 15304ef1aab98ba4eabe19784ee498b9, type: 3}
       propertyPath: _hanger
@@ -25292,7 +25292,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.6073718, y: 1}
+    m_SensorSize: {x: 1.0304487, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
