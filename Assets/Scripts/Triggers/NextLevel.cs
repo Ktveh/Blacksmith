@@ -21,16 +21,13 @@ public class NextLevel : MonoBehaviour
 
     private void SaveProgress()
     {
-        int record = 0;
         Leaderboard.GetPlayerEntry("PlaytestBoard", (result) =>
         {
-            if (result != null)
-                record = result.score;
+            if (result != null && result.score < _player.Money)
+            {
+                Leaderboard.SetScore("PlaytestBoard", _player.Money);
+            }
         });
-        if (record < _player.Money)
-        {
-            Leaderboard.SetScore("PlaytestBoard", _player.Money);
-        }
         PlayerPrefs.SetInt(Save.Money, _player.Money);
         PlayerPrefs.SetInt(Save.Limit, _player.Limit);
         PlayerPrefs.SetInt(Save.Level, _nextScene);

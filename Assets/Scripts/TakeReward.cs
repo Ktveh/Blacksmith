@@ -50,7 +50,12 @@ public class TakeReward : MonoBehaviour
 
     private void OnButtonClick()
     {
-        VideoAd.Show();
+        VideoAd.Show(null, GiveReward, null, null);
+        _button.gameObject.SetActive(false);
+    }
+
+    private void GiveReward()
+    {
         if (_isLimitReward)
         {
             _player.LimitUpgrade(_limit);
@@ -63,6 +68,5 @@ public class TakeReward : MonoBehaviour
         {
             _hanger.UnlockHat(_hat);
         }
-        _button.gameObject.SetActive(false);
     }
 }

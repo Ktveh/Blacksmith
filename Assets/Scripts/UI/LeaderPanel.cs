@@ -24,6 +24,11 @@ public class LeaderPanel : MonoBehaviour
 
     public void ShowLeaders()
     {
+        if (!PlayerAccount.IsAuthorized)
+        {
+            PlayerAccount.Authorize();
+        }
+
         Leaderboard.GetEntries("PlaytestBoard", (result) =>
         {
             Debug.Log($"My rank = {result.userRank}");
@@ -38,6 +43,7 @@ public class LeaderPanel : MonoBehaviour
                 Debug.Log(name + " " + entry.score);
             }
         });
+        
     }
 
     private void AddLeader(string name, int score, int place)
