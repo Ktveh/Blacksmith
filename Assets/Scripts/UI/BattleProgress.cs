@@ -8,6 +8,8 @@ public class BattleProgress : MonoBehaviour
     [SerializeField] private Container _battle;
     [SerializeField] private Slider _progressBattle;
 
+    private Coroutine _changeSliderJob;
+
     private void OnEnable()
     {
         _battle.ItemsChanged += OnItemsChanged;
@@ -25,11 +27,25 @@ public class BattleProgress : MonoBehaviour
         {
             amount += item.Value;
         }
-        ChangeSlider(amount);
+        StartChangeSlider(amount);
     }
 
-    private void ChangeSlider(int value)
+    private void StartChangeSlider(int value)
     {
-        _progressBattle.value = (float)value / (float)_battle.Limit;
+        if (_changeSliderJob != null)
+        {
+            StopCoroutine(_changeSliderJob);
+        }
+        StartCoroutine(ChangeSlider(value));
+    }
+
+    private IEnumerator ChangeSlider(int value)
+    {
+        float battleValue = (float)value / _battle.Limit;
+        while (_progressBattle.value != battleValue)
+        {
+            _progressBattle.value = Mathf.MoveTowards(_progressBattle.value, battleValue, Time.deltaTime);
+            yield return null;
+        }
     }
 }
