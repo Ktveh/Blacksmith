@@ -28,6 +28,7 @@ public class NextLevel : MonoBehaviour
                 Leaderboard.SetScore("PlaytestBoard", _player.Money);
             }
         });
+
         PlayerPrefs.SetInt(Save.Money, _player.Money);
         PlayerPrefs.SetInt(Save.Limit, _player.Limit);
         PlayerPrefs.SetInt(Save.Level, _nextScene);

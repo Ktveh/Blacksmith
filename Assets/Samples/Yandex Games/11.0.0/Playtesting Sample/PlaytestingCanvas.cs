@@ -31,7 +31,6 @@ namespace Agava.YandexGames.Samples
             yield break;
 #endif
 
-            // Always wait for it if invoking something immediately in the first scene.
             yield return YandexGamesSdk.Initialize();
 
             while (true)

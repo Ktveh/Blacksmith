@@ -17,11 +17,6 @@ public class HelpTrigger : Trigger
     private const float MinImageScale = 0;
     private const float DurationChangeImage = 0.3f;
 
-    private void OnEnable()
-    {
-        
-    }
-
     private void Start()
     {
         _helpWindow.gameObject.transform.DOScaleX(MinImageScale, DurationChangeImage);
