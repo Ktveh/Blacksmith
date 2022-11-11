@@ -39,6 +39,8 @@ public class LeaderPanel : MonoBehaviour
                     name = "Anonymous";
                 int score = entry.score;
                 int place = entry.rank;
+                if (place > 15)
+                    break;
                 AddLeader(name, score, place);
                 Debug.Log(name + " " + entry.score);
             }

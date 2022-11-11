@@ -15,6 +15,7 @@ public class CashDesk : MonoBehaviour
     private Knight _knight;
     private bool _free;
 
+    public bool IsReady => _knight != null;
     public bool Free => _free;
     public Transform ClientPosition => _clientPosition;
 

@@ -66,4 +66,12 @@ public class Knight : RecipientContainer
     {
         _isWin = true;
     }
+
+    protected override void CheckDonors(Container container)
+    {
+        if (_cashDesk != null && _cashDesk.IsReady)
+        {
+            base.CheckDonors(container);
+        }
+    }
 }

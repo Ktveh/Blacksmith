@@ -11,13 +11,7 @@ public class RecipientContainer : Container
         Container container;
         if (EllapsedTime > Delay && other.TryGetComponent<Container>(out container))
         {
-            foreach (Container donor in Donors)
-            {
-                if (container.gameObject == donor.gameObject)
-                {
-                    Take(container);
-                }
-            }
+            CheckDonors(container);
             EllapsedTime = 0;
         }
     }

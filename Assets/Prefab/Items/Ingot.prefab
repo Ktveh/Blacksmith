@@ -96,5 +96,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04439312a8b93b34abe34f52dde34436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 91c2623965f954b4b8127ef2910d483a, type: 3}
+  _icon: {fileID: 21300000, guid: 781a500a8918aea4abcb52e2314cdc8b, type: 3}
   _startRotation: {x: -90, y: 90, z: 0}
