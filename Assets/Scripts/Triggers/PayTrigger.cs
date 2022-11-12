@@ -7,12 +7,11 @@ using TMPro;
 public class PayTrigger : MonoBehaviour
 {
     [SerializeField] private int _needCoin;
-    [SerializeField] private Image _questionImage;
-    [SerializeField] private Button _yesButon;
-    [SerializeField] private Button _noButon;
-    [SerializeField] private TextMeshProUGUI _questionTMPro;
+    [SerializeField] private Image _fillImage;
+    [SerializeField] private float _fillSpeed;
 
     private Player _player;
+    private Coroutine _fillTriggerJob;
 
     public int NeedCoin => _needCoin;
 
@@ -28,47 +27,43 @@ public class PayTrigger : MonoBehaviour
     {
         if (other.TryGetComponent<Player>(out _player))
         {
-            CloseQuestion();
+            StartFillTrigger(0);
         }
-    }
-
-    private void CheckPlayerMoney()
-    {
-        if (_player.Money >= _needCoin)
-        {
-            if (_needCoin > 0)
-            {
-                OpenQuestion();
-            }
-            else
-            {
-                Active();
-            }
-        }
-    }
-
-    private void OpenQuestion()
-    {
-        _questionImage.gameObject.SetActive(true);
-        _yesButon.onClick.AddListener(Active);
-        _noButon.onClick.AddListener(CloseQuestion);
-        _questionTMPro.text = $"{Lean.Localization.LeanLocalization.GetTranslationText("Buy for")} {_needCoin}";
     }
 
     protected virtual void Active()
     {
         _player.SubMoney(_needCoin);
         gameObject.SetActive(false);
-        CloseQuestion();
     }
 
-    private void CloseQuestion()
+    private void CheckPlayerMoney()
     {
-        if (_questionImage.IsActive())
+        if (_player.Money >= _needCoin)
         {
-            _yesButon.onClick.RemoveListener(Active);
-            _noButon.onClick.RemoveListener(CloseQuestion);
-            _questionImage.gameObject.SetActive(false);
+            StartFillTrigger(1);
         }
     }
+
+    private void StartFillTrigger(float targetValue)
+    {
+        if (_fillTriggerJob != null)
+        {
+            StopCoroutine(_fillTriggerJob);
+        }
+        _fillTriggerJob = StartCoroutine(FillTrigger(targetValue));
+    }
+
+    private IEnumerator FillTrigger(float targetValue)
+    {
+        while (_fillImage.fillAmount != targetValue)
+        {
+            _fillImage.fillAmount = Mathf.MoveTowards(_fillImage.fillAmount, targetValue, _fillSpeed * Time.deltaTime);
+            if (_fillImage.fillAmount == 1)
+            {
+                Active();
+            }
+            yield return null;
+        }
+    } 
 }

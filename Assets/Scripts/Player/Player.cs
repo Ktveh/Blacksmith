@@ -37,15 +37,19 @@ public class Player : RecipientContainer
 
     public void AddMoney(int money)
     {
-        _money += money;
-        MoneyChanged?.Invoke(_money);
-        AudioCoin.Play();
+        ChangeAmountMoney(money);
     }
 
     public void SubMoney(int money)
     {
-        _money -= money;
+        ChangeAmountMoney(-money);
+    }
+
+    private void ChangeAmountMoney(int value)
+    {
+        _money += value;
         MoneyChanged?.Invoke(_money);
+        AudioCoin.Play();
     }
 
     public void ChangeHat(string hatName)

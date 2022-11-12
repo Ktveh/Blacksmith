@@ -23,7 +23,7 @@ public class NextLevel : MonoBehaviour
     {
         Leaderboard.GetPlayerEntry("PlaytestBoard", (result) =>
         {
-            if (result != null && result.score < _player.Money)
+            if (result == null || result.score < _player.Money)
             {
                 Leaderboard.SetScore("PlaytestBoard", _player.Money);
             }
