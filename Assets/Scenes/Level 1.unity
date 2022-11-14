@@ -1674,6 +1674,7 @@ MonoBehaviour:
   Donors: []
   FirstElementPosition: {fileID: 0}
   Items: []
+  _isBattle: 0
   _armor: {fileID: 0}
   _armorSign: {fileID: 0}
   _battlePosition: {fileID: 743973160}
@@ -5558,6 +5559,7 @@ MonoBehaviour:
   Donors: []
   FirstElementPosition: {fileID: 0}
   Items: []
+  _isBattle: 0
   _armor: {fileID: 0}
   _armorSign: {fileID: 0}
   _battlePosition: {fileID: 743973160}
@@ -5632,6 +5634,7 @@ MonoBehaviour:
   - {fileID: 1482342757}
   FirstElementPosition: {fileID: 85392119}
   Items: []
+  _isBattle: 1
 --- !u!4 &743973160
 Transform:
   m_ObjectHideFlags: 0
@@ -11869,6 +11872,7 @@ MonoBehaviour:
   Donors: []
   FirstElementPosition: {fileID: 0}
   Items: []
+  _isBattle: 0
   _armor: {fileID: 0}
   _armorSign: {fileID: 0}
   _battlePosition: {fileID: 743973160}
@@ -24372,7 +24376,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.69611305, y: 1}
+    m_SensorSize: {x: 1.0706713, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -27160,6 +27164,7 @@ MonoBehaviour:
   Donors: []
   FirstElementPosition: {fileID: 0}
   Items: []
+  _isBattle: 0
   _armor: {fileID: 0}
   _armorSign: {fileID: 0}
   _battlePosition: {fileID: 743973160}
@@ -27207,6 +27212,7 @@ MonoBehaviour:
   - {fileID: 936549504}
   FirstElementPosition: {fileID: 1033057567}
   Items: []
+  _isBattle: 0
 --- !u!4 &2135653825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 23f8b1558f173ee4ea8d7c0f2c5d01f0, type: 3}
@@ -27583,7 +27589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424110803877820836, guid: cf6da6bb686c1864bbe827bf7dc1360c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0001
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 424110803877820836, guid: cf6da6bb686c1864bbe827bf7dc1360c, type: 3}
       propertyPath: m_LocalPosition.y

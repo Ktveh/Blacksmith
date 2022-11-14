@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 2251657303172905865}
   - component: {fileID: 2251657303172905862}
   - component: {fileID: 2251657303172905863}
-  - component: {fileID: 2251657303172905861}
   m_Layer: 0
   m_Name: BlueCoinTrigger
   m_TagString: Untagged
@@ -206,21 +205,8 @@ MonoBehaviour:
   _needCoin: 10
   _fillImage: {fileID: 8370701056965358914}
   _fillSpeed: 0.7
-  _activatedObject: {fileID: 0}
---- !u!114 &2251657303172905861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2251657303172905864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6436d49e06f3d0342bcd455c8fef6365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _price: {fileID: 2251657304005275450}
-  _trigger: {fileID: 2251657303172905863}
+  _activatedObject: {fileID: 0}
 --- !u!1 &2251657303365799104
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class RecipientContainer : Container
 {
+    [SerializeField] private bool _isBattle;
+
+    private const int DifficultyPow = 10;
+
+    private void Start()
+    {
+        if (_isBattle)
+        {
+            LimitUpgrade(PlayerPrefs.GetInt(Save.Difficulty) * DifficultyPow);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         EllapsedTime += Time.deltaTime;

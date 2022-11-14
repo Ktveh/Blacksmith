@@ -478,7 +478,6 @@ GameObject:
   - component: {fileID: 1163287141666595242}
   - component: {fileID: 1163287141666595247}
   - component: {fileID: 1163287141666595232}
-  - component: {fileID: 1163287141666595246}
   m_Layer: 0
   m_Name: GreenConTrigger
   m_TagString: Untagged
@@ -594,22 +593,9 @@ MonoBehaviour:
   _needCoin: 20
   _fillImage: {fileID: 3977614565179974451}
   _fillSpeed: 0.7
+  _price: {fileID: 1163287139893908691}
   _upgradeContainer: {fileID: 0}
   _isLimitUpgrade: 1
   _limitIncrease: 1
   _isDelayUpgrade: 1
   _delayDecrease: 1
---- !u!114 &1163287141666595246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163287141666595241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6436d49e06f3d0342bcd455c8fef6365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: {fileID: 1163287139893908691}
-  _trigger: {fileID: 1163287141666595232}

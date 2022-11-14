@@ -15,6 +15,9 @@ public class CashDesk : MonoBehaviour
     private Knight _knight;
     private bool _free;
 
+    private const float Indent = 0.1f;
+    private const float MoneyPow = 0.5f;
+
     public bool IsReady => _knight != null;
     public bool Free => _free;
     public Transform ClientPosition => _clientPosition;
@@ -58,13 +61,15 @@ public class CashDesk : MonoBehaviour
         _fillArea.fillAmount = (float)amount / (float)_knight.Limit;
     }
 
-    private void TakeCoin(int amount)
+    private void TakeCoin(float amount)
     {
         Vector3 _startSpawnPosition = _spawnPosition.position;
+        amount += amount * MoneyPow * PlayerPrefs.GetInt(Save.Difficulty);
+
         for (int i = 0; i < amount; i++)
         {
+            _spawnPosition.position = new Vector3(_spawnPosition.position.x, _spawnPosition.position.y + i * Indent, _spawnPosition.position.z);
             Instantiate(_coin, _spawnPosition.position, Quaternion.identity);
-            _spawnPosition.position = new Vector3(_spawnPosition.position.x, _spawnPosition.position.y + i, _spawnPosition.position.z);
         }
         _spawnPosition.position = _startSpawnPosition;
     }

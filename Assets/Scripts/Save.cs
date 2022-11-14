@@ -9,4 +9,5 @@ public class Save : MonoBehaviour
     public const string Level = "Level";
     public const string CurrentHat = "CurrentHat";
     public const string Hat = "Hat";
+    public const string Difficulty = "Difficulty";
 }

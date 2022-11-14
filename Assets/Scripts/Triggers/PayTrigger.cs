@@ -9,11 +9,20 @@ public class PayTrigger : MonoBehaviour
     [SerializeField] private int _needCoin;
     [SerializeField] private Image _fillImage;
     [SerializeField] private float _fillSpeed;
+    [SerializeField] private TextMeshProUGUI _price;
 
     private Player _player;
     private Coroutine _fillTriggerJob;
 
+    private const int MoneyPow = 10;
+
     public int NeedCoin => _needCoin;
+
+    private void Start()
+    {
+        _needCoin += MoneyPow * PlayerPrefs.GetInt(Save.Difficulty);
+        _price.text = _needCoin.ToString();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

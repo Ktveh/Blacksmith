@@ -18,6 +18,7 @@ public class TitleScreen : MonoBehaviour
     private const int StartMoney = 0;
     private const int StartLimit = 4;
     private const int StartLevel = 1;
+    private const int StartDifficulty = 0;
 
     private void OnEnable()
     {
@@ -88,6 +89,7 @@ public class TitleScreen : MonoBehaviour
         PlayerPrefs.SetInt(Save.Money, StartMoney);
         PlayerPrefs.SetInt(Save.Limit, StartLimit);
         PlayerPrefs.SetInt(Save.Level, StartLevel);
+        PlayerPrefs.SetInt(Save.Difficulty, StartDifficulty);
         gameObject.SetActive(false);
     }
 }
