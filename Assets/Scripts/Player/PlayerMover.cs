@@ -49,11 +49,11 @@ public class PlayerMover : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             ChangeValueVector(new Vector2(_horizontalVector, 1));
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             ChangeValueVector(new Vector2(_horizontalVector, -1));
         }
@@ -62,11 +62,11 @@ public class PlayerMover : MonoBehaviour
             ChangeValueVector(new Vector2(_horizontalVector, 0));
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             ChangeValueVector(new Vector2(1, _verticalVector));
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             ChangeValueVector(new Vector2(-1, _verticalVector));
         }
