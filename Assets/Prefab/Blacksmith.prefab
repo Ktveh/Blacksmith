@@ -490,7 +490,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2433225340952736546}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: -0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -498,7 +498,7 @@ Transform:
   - {fileID: 8065038396801835811}
   m_Father: {fileID: 4157721615484554474}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -75.111534, y: 327.1599, z: -1.0375977}
+  m_LocalEulerAnglesHint: {x: -90, y: 360, z: 0}
 --- !u!1 &2533229286099944258
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +761,7 @@ MonoBehaviour:
   - {fileID: 0}
   FirstElementPosition: {fileID: 4483765240484496117}
   Items: []
+  _isBattle: 0
   AudioCoin: {fileID: 7585629780898554019}
   AudioTake: {fileID: 7609189838716387104}
   _hats:
@@ -1126,7 +1127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4483765240484496118}
   m_LocalRotation: {x: 0.04122629, y: -0.000000024036865, z: -0.000000024036858, w: 0.9991499}
-  m_LocalPosition: {x: 0.00048, y: 0.00064, z: 0.00532}
+  m_LocalPosition: {x: 0.00048, y: -0.00008, z: 0.00459}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []

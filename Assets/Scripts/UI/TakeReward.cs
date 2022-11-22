@@ -18,6 +18,7 @@ public class TakeReward : MonoBehaviour
     [SerializeField] private int _money;
     [SerializeField] private bool _isHatReward;
     [SerializeField] private Hat _hat;
+    [SerializeField] private HelpTrigger _finishTrigger;
 
     private void OnEnable()
     {
@@ -29,6 +30,7 @@ public class TakeReward : MonoBehaviour
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OnButtonClick);
+        _finishTrigger.gameObject.SetActive(true);
         _panel.gameObject.SetActive(false);
     }
 
