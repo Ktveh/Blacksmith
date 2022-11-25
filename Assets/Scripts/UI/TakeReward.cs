@@ -18,7 +18,9 @@ public class TakeReward : MonoBehaviour
     [SerializeField] private int _money;
     [SerializeField] private bool _isHatReward;
     [SerializeField] private Hat _hat;
-    [SerializeField] private HelpTrigger _finishTrigger;
+    [SerializeField] private Trigger _finishTrigger;
+
+    private const int FirstLevel = 0;
 
     private void OnEnable()
     {
@@ -30,7 +32,10 @@ public class TakeReward : MonoBehaviour
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OnButtonClick);
-        _finishTrigger.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt(Save.Level) == FirstLevel)
+        {
+            _finishTrigger.gameObject.SetActive(true);
+        }     
         _panel.gameObject.SetActive(false);
     }
 

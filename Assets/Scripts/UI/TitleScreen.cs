@@ -17,7 +17,7 @@ public class TitleScreen : MonoBehaviour
     private const float WaitTime = 0.25f;
     private const int StartMoney = 0;
     private const int StartLimit = 4;
-    private const int StartLevel = 1;
+    private const int StartLevel = 0;
     private const int StartDifficulty = 0;
 
     private void OnEnable()
