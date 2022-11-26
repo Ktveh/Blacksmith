@@ -17,6 +17,7 @@ public class NextLevel : MonoBehaviour
         if (other.TryGetComponent<Player>(out _player))
         {
             SaveProgress();
+            InterstitialAd.Show();
             SceneManager.LoadScene(_nextScene);
         }
     }
